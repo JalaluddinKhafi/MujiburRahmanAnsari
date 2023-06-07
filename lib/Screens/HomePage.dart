@@ -163,11 +163,10 @@ class CategoriesScroller extends StatelessWidget {
                 margin: EdgeInsets.only(right: 20),
                 height: categoryHeight,
                 decoration: BoxDecoration(
-                    color: Colors.orange.shade400,
                     borderRadius: BorderRadius.all(Radius.circular(20.0),
                     ),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/picture_1.jpg'),
+                    image: AssetImage('assets/images/picture1.jpg'),
                     fit:BoxFit.cover
                   ),
                 ),
@@ -180,52 +179,68 @@ class CategoriesScroller extends StatelessWidget {
                 width: 150,
                 margin: EdgeInsets.only(right: 20),
                 height: categoryHeight,
-                decoration: BoxDecoration(color: Colors.blue.shade400, borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                child: Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Newest",
-                          style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "20 Items",
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
-                      ],
-                    ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0),
                   ),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/picture2.jpg'),
+                      fit:BoxFit.cover
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+
                 ),
               ),
               Container(
                 width: 150,
                 margin: EdgeInsets.only(right: 20),
                 height: categoryHeight,
-                decoration: BoxDecoration(color: Colors.lightBlueAccent.shade400, borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Super\nSaving",
-                        style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "20 Items",
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0),
                   ),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/picture3.jpg'),
+                      fit:BoxFit.cover
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+
+                ),
+              ),
+              Container(
+                width: 150,
+                margin: EdgeInsets.only(right: 20),
+                height: categoryHeight,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0),
+                  ),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/picture4.jpg'),
+                      fit:BoxFit.cover
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+
+                ),
+              ),
+              Container(
+                width: 150,
+                margin: EdgeInsets.only(right: 20),
+                height: categoryHeight,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0),
+                  ),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/picture5.jpg'),
+                      fit:BoxFit.cover
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+
                 ),
               ),
             ],
