@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:profile/constants.dart';
+import 'package:profile/scroller.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -16,43 +17,46 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> itemsData = [];
 
   void getPostsData() {
-    List<dynamic> responseList = FOOD_DATA;
+    List<dynamic> responseList = achievement;
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
           height: 150,
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)), color: Colors.white, boxShadow: [
-            BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
-          ]),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
+              ]),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+               Image.asset(
+                    "assets/images/${post["image"]}",fit: BoxFit.cover,
+                    height:100,
+                  ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       post["name"],
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 10,
+                      style: const TextStyle(
+                          fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
-                Image.asset(
-                  "assets/images/${post["image"]}",
-                  height: double.infinity,
-                )
               ],
             ),
           )));
-    });
+    },
+    );
     setState(() {
       itemsData = listItems;
-    });
+    },
+    );
   }
 
   @override
@@ -60,8 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     getPostsData();
     controller.addListener(() {
-
-      double value = controller.offset/119;
+      double value = controller.offset / 119;
 
       setState(() {
         topContainer = value;
@@ -73,12 +76,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final double categoryHeight = size.height*0.30;
+    final double categoryHeight = size.height * 0.30;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('شهید مولانا مجیب الرحمن انصاری (رح)',),
+          title: Text(
+            'شهید مولانا مجیب الرحمن انصاری (رح)',
+          ),
           actions: [
             Icon(CupertinoIcons.chat_bubble_text),
             SizedBox(
@@ -99,12 +104,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 200),
-                opacity: closeTopContainer?0:1,
+                opacity: closeTopContainer ? 0 : 1,
                 child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     width: size.width,
                     alignment: Alignment.topCenter,
-                    height: closeTopContainer?0:categoryHeight,
+                    height: closeTopContainer ? 0 : categoryHeight,
                     child: categoriesScroller),
               ),
               Expanded(
@@ -125,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         return Opacity(
                           opacity: scale,
                           child: Transform(
-                            transform:  Matrix4.identity()..scale(scale,scale),
+                            transform: Matrix4.identity()..scale(scale, scale),
                             alignment: Alignment.bottomCenter,
                             child: Align(
                                 heightFactor: 0.7,
@@ -134,115 +139,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         );
                       })),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CategoriesScroller extends StatelessWidget {
-  const CategoriesScroller();
-
-  @override
-  Widget build(BuildContext context) {
-    final double categoryHeight = MediaQuery.of(context).size.height * 0.30 - 50;
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: FittedBox(
-          fit: BoxFit.fill,
-          alignment: Alignment.topCenter,
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: 150,
-                margin: EdgeInsets.only(right: 20),
-                height: categoryHeight,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0),
-                    ),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/picture1.jpg'),
-                    fit:BoxFit.cover
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-
-                ),
-              ),
-              Container(
-                width: 150,
-                margin: EdgeInsets.only(right: 20),
-                height: categoryHeight,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0),
-                  ),
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/picture2.jpg'),
-                      fit:BoxFit.cover
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-
-                ),
-              ),
-              Container(
-                width: 150,
-                margin: EdgeInsets.only(right: 20),
-                height: categoryHeight,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0),
-                  ),
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/picture3.jpg'),
-                      fit:BoxFit.cover
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-
-                ),
-              ),
-              Container(
-                width: 150,
-                margin: EdgeInsets.only(right: 20),
-                height: categoryHeight,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0),
-                  ),
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/picture4.jpg'),
-                      fit:BoxFit.cover
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-
-                ),
-              ),
-              Container(
-                width: 150,
-                margin: EdgeInsets.only(right: 20),
-                height: categoryHeight,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0),
-                  ),
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/picture5.jpg'),
-                      fit:BoxFit.cover
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-
-                ),
-              ),
             ],
           ),
         ),
