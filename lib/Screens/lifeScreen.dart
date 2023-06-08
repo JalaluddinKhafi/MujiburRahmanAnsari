@@ -1,12 +1,43 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
+import 'package:readmore/readmore.dart';
 
 class  biography extends StatelessWidget {
-String content="مولانا مجیب الرحمن انصاری فرزند خواجه محمد رفیق انصاری ولدیت خواجه محمد صدیق انصاری، در سال ۱۳۶۲ در یك خانواده متدین در گازرگاه شریف هرات دیده به جهان گشود.مولانا مجیب الرحمن انصاری از لحاظ نسب به خواجه عبدالله انصاری هروی و سرانجام به ابو ایوب انصاری می رسد. مولانا انصاری در سن ۱۳ سالگی مشغول حفظ كلام الله و در سن ۱۵ سالگی، حفظ كلام خدا را به اتمام رسانیده است. او با هوش و ذكاوت خدا دادی كه داشت در مدت دو سال حفظ كلام پاك الله را به اتمام رسانید. بعد به فراگرفتن علوم دیگر دینی و اجتماعی پرداخت و در سن ۱۹ سالگی بصفت خطیب مسجد جامع گازرگاه شریف از جانب مردم و جامعه‌ی روحانیت برگزیده شد. ولانا انصاری در سال ۱۳۸۴ از فرا گیری علوم دینی و اجتماعی فارغ شد و در همان سال عازم خانه خداوند (جل‌جلاله) گردید و بعد از برگشت این سفر مبارك در دارالعلوم عالی انصار مشغول خواندن علم حدیث شد. كه این روند تا سال ۱۳۸۹ دوام نمود. الحاج مولانا مجیب الرحمان انصاری مصروف تدریس در دارالعلوم عالی انصار واقع در گازرگاه شریف بوده و تبلیغ مسایل و احكام دینی از طرف وی برای شهروندان كشور به‌گونه جدی به جریان بود هم‌چنان بكار تبلیغ دین اسلام پرداخته بود . مولوی مجیب الرحمن انصاری در روز جمعه (۱۱ سنبله ۱۴۰۱ش) پیش از رسیدن به مسجد جامع گازرگاه شریف توسط یکی از نیروهای گروه داعش که به منظور احوال‌پرسی نزد ایشان آمده و خود را منفجر کردند به شهادت رسانیدند.";
+ String content="welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman.welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman.welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman.welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ,
-
+      appBar: AppBar(
+        title: Text("Biography page"),
+        backgroundColor: Colors.green[700],
+        centerTitle: true,
+        brightness: Brightness.dark,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: ReadMoreText(
+            content,
+            trimLines: 3,
+            textAlign: TextAlign.justify,
+            trimMode: TrimMode.Line,
+            trimCollapsedText: " Show More ",
+            trimExpandedText: " Show Less ",
+            lessStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.green[700],
+            ),
+            moreStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.green[700],
+            ),
+            style: TextStyle(
+              fontSize: 16,
+              height: 2,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
