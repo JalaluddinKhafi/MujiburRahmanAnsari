@@ -1,7 +1,8 @@
 const achievement = [
   {
     "name":"زندگی نامه",
-    "image":"lifepicture.jpg"
+    "image":"lifepicture.jpg",
+    "screen":"biography()"
   },
   {
     "name":"سخنرانی ها",

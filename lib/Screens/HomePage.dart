@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:profile/constants.dart';
-import 'package:profile/scroller.dart';
+import 'package:profile/mainScroller.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -20,7 +20,8 @@ class _MyHomePageState extends State<MyHomePage> {
     List<dynamic> responseList = achievement;
     List<Widget> listItems = [];
     responseList.forEach((post) {
-      listItems.add(Container(
+      listItems.add(
+          Container(
           height: 150,
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
@@ -31,24 +32,31 @@ class _MyHomePageState extends State<MyHomePage> {
               ]),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-               Image.asset(
-                    "assets/images/${post["image"]}",fit: BoxFit.cover,
-                    height:100,
-                  ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            child: InkWell(
+              onTap: (){
+
+              },
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(
-                      post["name"],
-                      style: const TextStyle(
-                          fontSize: 28, fontWeight: FontWeight.bold),
+                   Image.asset(
+                        "assets/images/${post["image"]}",fit: BoxFit.cover,
+                        height:100,
+                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          post["name"],
+                          style: const TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           )));
     },
