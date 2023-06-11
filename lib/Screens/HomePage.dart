@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:profile/constants.dart';
 import 'package:profile/mainScroller.dart';
 
+import 'lifeScreen.dart';
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -15,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double topContainer = 0;
 
   List<Widget> itemsData = [];
-
+  int? rowNumber;
   void getPostsData() {
     List<dynamic> responseList = achievement;
     List<Widget> listItems = [];
@@ -80,7 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
-
+  onTapFile(int f) {
+    if (f== 0) {
+      return biography();
+    }else if(f==1){
+      return biography();
+    }
+  }
   @override
   void initState() {
     super.initState();
@@ -149,15 +157,21 @@ class _MyHomePageState extends State<MyHomePage> {
                             scale = 1;
                           }
                         }
-                        return Opacity(
-                          opacity: scale,
-                          child: Transform(
-                            transform: Matrix4.identity()..scale(scale, scale),
-                            alignment: Alignment.bottomCenter,
-                            child: Align(
-                                heightFactor: 0.7,
-                                alignment: Alignment.topCenter,
-                                child: itemsData[index]),
+                        return GestureDetector(
+                          onTap: () {
+                            this.rowNumber=rowNumber;
+                            debugPrint(rowNumber.toString());
+                          },
+                          child: Opacity(
+                            opacity: scale,
+                            child: Transform(
+                              transform: Matrix4.identity()..scale(scale, scale),
+                              alignment: Alignment.bottomCenter,
+                              child: Align(
+                                  heightFactor: 0.7,
+                                  alignment: Alignment.topCenter,
+                                  child: itemsData[index]),
+                            ),
                           ),
                         );
                       })),
