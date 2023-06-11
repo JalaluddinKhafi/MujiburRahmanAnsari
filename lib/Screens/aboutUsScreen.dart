@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class tfScreen extends StatelessWidget {
+class aboutUs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'تفسیر قرآنکریم',
+          'درباره برنامه',
         ),
         actions: [
           Icon(CupertinoIcons.chat_bubble_text),

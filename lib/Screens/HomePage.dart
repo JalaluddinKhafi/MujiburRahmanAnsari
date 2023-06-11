@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:profile/Screens/aboutUsScreen.dart';
+import 'package:profile/Screens/achievmentScreen.dart';
+import 'package:profile/Screens/clipScreen.dart';
+import 'package:profile/Screens/goodStuffScreen.dart';
 import 'package:profile/Screens/speakScreen.dart';
+import 'package:profile/Screens/tafserScreen.dart';
 import 'package:profile/constants.dart';
 import 'package:profile/mainScroller.dart';
 
@@ -88,6 +93,16 @@ class _MyHomePageState extends State<MyHomePage> {
       return biography();
     }else if(index==1){
       return spScreen();
+    }else if(index==2){
+      return tfScreen();
+    }else if(index==3){
+      return clipScreen();
+    }else if(index==4){
+      return achievScreen();
+    }else if(index==5){
+      return stuff();
+    }else if(index==6) {
+      return aboutUs();
     }
   }
   @override
@@ -148,10 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       controller: controller,
                       itemCount: itemsData.length,
                       physics: BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
+                      itemBuilder: (context, rowNumber) {
                         double scale = 1.0;
                         if (topContainer > 0.5) {
-                          scale = index + 0.5 - topContainer;
+                          scale = rowNumber + 0.5 - topContainer;
                           if (scale < 0) {
                             scale = 0;
                           } else if (scale > 1) {
@@ -171,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Align(
                                   heightFactor: 0.7,
                                   alignment: Alignment.topCenter,
-                                  child: itemsData[index]),
+                                  child: itemsData[rowNumber]),
                             ),
                           ),
                         );
