@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:readmore/readmore.dart';
 
 class  biography extends StatelessWidget {
- String content="welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman.welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman.welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman.welcome to the page of biography in this page we will discouse about the life of Mollanah Mojeb Rahman";
+ String content="در این مطلب از ستاره گلچینی از متن درباره جنگ و صلح را در اختیار شما دوستان عزیز گذاشته‌ایم. با مجموعه‌ای از شعر در مورد صلح و دوستی، متن در مورد صلح و سازش، اشعار و دوبیتی های کوتاه درباره صلح و ... همراه ما باشید.";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

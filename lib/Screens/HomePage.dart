@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:profile/Screens/lifeScreen.dart';
 import 'package:profile/constants.dart';
 import 'package:profile/mainScroller.dart';
 
@@ -20,8 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void getPostsData() {
     List<dynamic> responseList = achievement;
     List<Widget> listItems = [];
-    responseList.forEach(
-      (post) {
+    responseList.forEach((post) {
         listItems.add(
           Container(
             height: 150,
@@ -72,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
         );
       },
     );
