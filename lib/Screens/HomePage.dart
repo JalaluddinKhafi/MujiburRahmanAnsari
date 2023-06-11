@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:profile/Screens/speakScreen.dart';
 import 'package:profile/constants.dart';
 import 'package:profile/mainScroller.dart';
 
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return post["screen"];
+                        return onTapFile( post["newScreen"]);
                       },
                     ),
                   );
@@ -82,11 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
-  onTapFile(int f) {
-    if (f== 0) {
+  onTapFile(int index) {
+    if (index== 0) {
       return biography();
-    }else if(f==1){
-      return biography();
+    }else if(index==1){
+      return spScreen();
     }
   }
   @override
