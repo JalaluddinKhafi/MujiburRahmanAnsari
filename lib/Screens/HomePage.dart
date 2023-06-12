@@ -6,7 +6,7 @@ import 'package:profile/Screens/clipScreen.dart';
 import 'package:profile/Screens/goodStuffScreen.dart';
 import 'package:profile/Screens/speakScreen.dart';
 import 'package:profile/Screens/tafserScreen.dart';
-import 'package:profile/constants.dart';
+import 'package:profile/constants/constants.dart';
 import 'package:profile/mainScroller.dart';
 
 import 'lifeScreen.dart';
@@ -27,7 +27,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void getPostsData() {
     List<dynamic> responseList = achievement;
     List<Widget> listItems = [];
-    responseList.forEach((post) {
+    responseList.forEach(
+      (post) {
         listItems.add(
           Container(
             height: 150,
@@ -48,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return onTapFile( post["newScreen"]);
+                        return onTapFile(post["newScreen"]);
                       },
                     ),
                   );
@@ -78,7 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
         );
       },
     );
@@ -88,23 +88,25 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+
   onTapFile(int index) {
-    if (index== 0) {
+    if (index == 0) {
       return biography();
-    }else if(index==1){
+    } else if (index == 1) {
       return spScreen();
-    }else if(index==2){
+    } else if (index == 2) {
       return tfScreen();
-    }else if(index==3){
+    } else if (index == 3) {
       return clipScreen();
-    }else if(index==4){
+    } else if (index == 4) {
       return achievScreen();
-    }else if(index==5){
+    } else if (index == 5) {
       return stuff();
-    }else if(index==6) {
+    } else if (index == 6) {
       return aboutUs();
     }
   }
+
   @override
   void initState() {
     super.initState();
@@ -159,38 +161,40 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: categoriesScroller),
               ),
               Expanded(
-                  child: ListView.builder(
-                      controller: controller,
-                      itemCount: itemsData.length,
-                      physics: BouncingScrollPhysics(),
-                      itemBuilder: (context, rowNumber) {
-                        double scale = 1.0;
-                        if (topContainer > 0.5) {
-                          scale = rowNumber + 0.5 - topContainer;
-                          if (scale < 0) {
-                            scale = 0;
-                          } else if (scale > 1) {
-                            scale = 1;
-                          }
-                        }
-                        return GestureDetector(
-                          onTap: () {
-                            this.rowNumber=rowNumber;
-                            debugPrint(rowNumber.toString());
-                          },
-                          child: Opacity(
-                            opacity: scale,
-                            child: Transform(
-                              transform: Matrix4.identity()..scale(scale, scale),
-                              alignment: Alignment.bottomCenter,
-                              child: Align(
-                                  heightFactor: 0.7,
-                                  alignment: Alignment.topCenter,
-                                  child: itemsData[rowNumber]),
-                            ),
-                          ),
-                        );
-                      })),
+                child: ListView.builder(
+                  controller: controller,
+                  itemCount: itemsData.length,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: (context, rowNumber) {
+                    double scale = 1.0;
+                    if (topContainer > 0.5) {
+                      scale = rowNumber + 0.5 - topContainer;
+                      if (scale < 0) {
+                        scale = 0;
+                      } else if (scale > 1) {
+                        scale = 1;
+                      }
+                    }
+                    return GestureDetector(
+                      onTap: () {
+                        this.rowNumber = rowNumber;
+                        debugPrint(rowNumber.toString());
+                      },
+                      child: Opacity(
+                        opacity: scale,
+                        child: Transform(
+                          transform: Matrix4.identity()..scale(scale, scale),
+                          alignment: Alignment.bottomCenter,
+                          child: Align(
+                              heightFactor: 0.7,
+                              alignment: Alignment.topCenter,
+                              child: itemsData[rowNumber]),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

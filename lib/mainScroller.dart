@@ -14,6 +14,7 @@ class CategoriesScroller extends StatelessWidget {
           fit: BoxFit.fill,
           alignment: Alignment.topCenter,
           child: Row(
+
             children: <Widget>[
               Container(
                 width: 150,

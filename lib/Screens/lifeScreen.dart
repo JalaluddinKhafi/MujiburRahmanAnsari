@@ -1,43 +1,45 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:readmore/readmore.dart';
-
 class  biography extends StatelessWidget {
- String content="در این مطلب از ستاره گلچینی از متن درباره جنگ و صلح را در اختیار شما دوستان عزیز گذاشته‌ایم. با مجموعه‌ای از شعر در مورد صلح و دوستی، متن در مورد صلح و سازش، اشعار و دوبیتی های کوتاه درباره صلح و ... همراه ما باشید.";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Biography page"),
-        backgroundColor: Colors.green[700],
-        centerTitle: true,
-        brightness: Brightness.dark,
+        title: Text("زندگی نامه مولانا انصاری (رح)"),
+        toolbarHeight: 50,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(15),
-          child: ReadMoreText(
-            content,
-            trimLines: 3,
-            textAlign: TextAlign.justify,
-            trimMode: TrimMode.Line,
-            trimCollapsedText: " Show More ",
-            trimExpandedText: " Show Less ",
-            lessStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.green[700],
-            ),
-            moreStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.green[700],
-            ),
-            style: TextStyle(
-              fontSize: 16,
-              height: 2,
-            ),
-          ),
+      body:  Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+
+                  Container(
+
+                        alignment: Alignment.center,
+                          padding:EdgeInsets.all(15),
+                        width: 300,
+                        height: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20.0),
+                            ),
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/picture_1.jpg'),
+                                fit:BoxFit.cover
+                            ),
+                          )
+                      ),
+                  SizedBox(height: 20,),
+                 Text(
+                   "مختصری از زندگی نامه مولوی مجیب الرحمن انصاری رحمة‌الله‌عليه",
+                   textAlign: TextAlign.center,
+                   style: TextStyle(
+
+                   ),
+
+
+                 ),
+                ],
         ),
-      ),
+
     );
   }
 }
