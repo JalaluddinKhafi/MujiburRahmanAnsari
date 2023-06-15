@@ -25,96 +25,52 @@ class _BiographyState extends State<Biography> {
       ];
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Icon(Icons.arrow_back_ios),
+          title: const Text(
+            'زندگینامه مولانا انصاری (رح)',),
+          actions: const [
+            Icon(CupertinoIcons.chat_bubble_text),
+            SizedBox(
+              width: 4,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
+              child: Icon(CupertinoIcons.ellipsis_vertical),
+            ),
+          ],
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              child: Expanded(
 
-    ScrollController controller=ScrollController();
-    bool closeTopPictuer=false;
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios),
-        title: const Text(
-          'زندگینامه مولانا انصاری (رح)',),
-        actions: const [
-          Icon(CupertinoIcons.chat_bubble_text),
-          SizedBox(
-            width: 4,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
-            child: Icon(CupertinoIcons.ellipsis_vertical),
-          ),
-        ],
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(height: 1,),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                  padding: EdgeInsets.all(5),
-                  width: 400,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft:Radius.circular(10.0),
-                      topRight:Radius.circular(10.0),
-                      bottomLeft:Radius.circular(90.0),
-                      bottomRight:Radius.circular(10.0),
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(left: 20,right:20),
+                  itemCount: biographyText.length,
+                  itemBuilder: (context, index){
 
+                   //final item=biographyText[index];
+                  return Text(biographyText[index],textAlign: TextAlign.right,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 20,color: Colors.indigo,
                     ),
-
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/biography.jpg'),
-                        fit: BoxFit.cover),
-                  ),
-              ),
-              SizedBox(height: 10,),
-              Text(
-                "مختصری از زندگی نامه شهد مولانا مجیب الرحمن انصاری رحمة‌الله‌عليه",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
+                  );
+                },
                 ),
-              ),
-              Text(
-                "..........................................................",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            child: Expanded(
-
-              child: ListView.builder(
-                controller: controller,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                padding: EdgeInsets.only(left: 15,right:15),
-                itemCount: biographyText.length,
-                itemBuilder: (context, index){
-
-                 //final item=biographyText[index];
-                return Text(biographyText[index],textAlign: TextAlign.right,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 20,color: Colors.indigo,
-                  ),
-                );
-              },
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
