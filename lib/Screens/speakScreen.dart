@@ -1,31 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+class spScreen extends StatefulWidget {
+  const spScreen({Key? key}) : super(key: key);
 
-class spScreen extends StatelessWidget {
+  @override
+  State<spScreen> createState() => _spScreenState();
+}
 
+class _spScreenState extends State<spScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'شهید مولانا مجیب الرحمن انصاری (رح)',
+      endDrawer: const Drawer(
+        child: Center(
+          child: Text("this is drawer"),
         ),
-        actions: [
-          Icon(CupertinoIcons.chat_bubble_text),
-          SizedBox(
-            width: 4,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
-            child: Icon(CupertinoIcons.ellipsis_vertical),
-          ),
-        ],
       ),
-      body:Column(
-        children: [
-
-        ],
+      appBar: AppBar(
+        leading: Icon(Icons.arrow_back_ios),
       ),
     );
   }
 }
+

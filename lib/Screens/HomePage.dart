@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:profile/Screens/aboutUsScreen.dart';
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             post["name"],
                             style: const TextStyle(
-                                fontSize: 28, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   onTapFile(int index) {
     if (index == 0) {
-      return biography();
+      return Biography();
     } else if (index == 1) {
       return spScreen();
     } else if (index == 2) {
@@ -129,10 +130,17 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(
+          centerTitle:true,
+          title:const Text(
             'شهید مولانا مجیب الرحمن انصاری (رح)',
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           ),
           actions: [
+            SizedBox(width: 10,),
             Icon(CupertinoIcons.chat_bubble_text),
             SizedBox(
               width: 4,

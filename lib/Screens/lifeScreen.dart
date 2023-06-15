@@ -1,13 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-class biography extends StatefulWidget {
+class Biography extends StatefulWidget {
   @override
-  State<biography> createState() => _biographyState();
+  State<Biography> createState() => _BiographyState();
 }
 
-class _biographyState extends State<biography> {
-  final ScrollController _firstController = ScrollController();
+class _BiographyState extends State<Biography> {
   List<String> biographyText=[
     "مولانا  مجیب الرحمن انصاری فرزند خواجه محمد رفیق انصاری ولدیت خواجه محمد صدیق انصاری، در سال ۱۳۶۲ در یك خانواده متدین در گازرگاه شریف هرات دیده به جهان گشود",
     " ",
@@ -26,10 +26,23 @@ class _biographyState extends State<biography> {
   @override
   Widget build(BuildContext context) {
 
+    ScrollController controller=ScrollController();
+    bool closeTopPictuer=false;
     return Scaffold(
       appBar: AppBar(
-        title: Text("زندگی نامه مولانا انصاری (رح)"),
-        toolbarHeight: 50,
+        leading: Icon(Icons.arrow_back_ios),
+        title: const Text(
+          'زندگینامه مولانا انصاری (رح)',),
+        actions: const [
+          Icon(CupertinoIcons.chat_bubble_text),
+          SizedBox(
+            width: 4,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
+            child: Icon(CupertinoIcons.ellipsis_vertical),
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -81,10 +94,12 @@ class _biographyState extends State<biography> {
           ),
           Container(
             child: Expanded(
+
               child: ListView.builder(
+                controller: controller,
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.only(left: 15,right:15),
                 itemCount: biographyText.length,
                 itemBuilder: (context, index){
 
