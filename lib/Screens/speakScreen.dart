@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:profile/Screens/HomePage.dart';
 class spScreen extends StatefulWidget {
   const spScreen({Key? key}) : super(key: key);
 
@@ -11,11 +12,14 @@ class spScreen extends StatefulWidget {
 
 class _spScreenState extends State<spScreen> {
   List videoInfo = [];
+  bool _playArea=false;
   _initData() async {
     await DefaultAssetBundle.of(context)
         .loadString("json/videoInfo.json")
         .then((value) {
-      videoInfo = json.decode(value);
+     setState(() {
+       videoInfo = json.decode(value);
+     });
     });
   }
 
@@ -32,7 +36,7 @@ class _spScreenState extends State<spScreen> {
         decoration: BoxDecoration(color: Colors.teal),
         child: Column(
           children: [
-            Container(
+            _playArea==false?Container(
               padding: const EdgeInsets.only(top: 70, left: 30, right: 30),
               width: MediaQuery.of(context).size.width,
               height: 300,
@@ -79,9 +83,29 @@ class _spScreenState extends State<spScreen> {
                   )
                 ],
               ),
+            ):Container(
+             child: Column(
+               children: [
+                 Container(
+                   height: 100,
+                   padding: const EdgeInsets.only(top: 50,left: 30,right: 30),
+                   child: Row(
+                     children: [
+                       InkWell(
+                         onTap: (){
+                         },
+                         child: Icon(Icons.arrow_back_ios,size: 20,color: Colors.white,),
+                       ),
+                       Expanded(child: Container()),
+                       Icon(Icons.info_outline,size: 20,color: Colors.white)
+                     ],
+                   ),
+                 ),
+                 _playView(context),
+               ],
+             ),
             ),
-            Expanded(
-              child: Container(
+            Expanded(child: Container(
                 padding: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -112,7 +136,13 @@ class _spScreenState extends State<spScreen> {
       itemBuilder: (_,int index){
         return GestureDetector(
           onTap: (){
+            _onTapVideo(index);
             debugPrint(index.toString());
+            setState(() {
+              if(_playArea==false){
+                _playArea=true;
+              }
+            });
           },
           child: _buildCard(index) ,
         );
@@ -209,5 +239,12 @@ class _spScreenState extends State<spScreen> {
         ],
       ),
     );
+  }
+
+  _playView(BuildContext context){
+
+  }
+  _onTapVideo(int index){
+
   }
 }
