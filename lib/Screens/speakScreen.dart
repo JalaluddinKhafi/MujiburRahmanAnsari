@@ -8,6 +8,13 @@ class spScreen extends StatefulWidget {
 }
 
 class _spScreenState extends State<spScreen> {
+
+  List videoInfo=[];
+  _initData(){
+    DefaultAssetBundle.of(context).loadString("json")
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
