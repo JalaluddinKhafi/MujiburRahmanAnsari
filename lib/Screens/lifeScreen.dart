@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
+import 'package:get/get.dart';
+
 class Biography extends StatefulWidget {
   @override
   State<Biography> createState() => _BiographyState();
@@ -28,7 +30,11 @@ class _BiographyState extends State<Biography> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back_ios),
+          leading: InkWell(
+              onTap: (){
+                Get.back();
+              },
+              child: Icon(Icons.arrow_back_ios)),
           title: const Text(
             'زندگینامه مولانا انصاری (رح)',),
           actions: const [
