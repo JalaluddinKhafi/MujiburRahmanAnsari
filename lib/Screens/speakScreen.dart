@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:profile/Screens/HomePage.dart';
 class spScreen extends StatefulWidget {
   const spScreen({Key? key}) : super(key: key);
 
@@ -11,7 +14,14 @@ class _spScreenState extends State<spScreen> {
 
   List videoInfo=[];
   _initData(){
-    DefaultAssetBundle.of(context).loadString("json")
+    DefaultAssetBundle.of(context).loadString("json/videoInfo.json").then((value){
+      videoInfo=json.decode(value);
+    });
+  }
+   @override
+   void initState() {
+    super.initState();
+    _initData();
   }
 
 
@@ -33,7 +43,11 @@ class _spScreenState extends State<spScreen> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Icon(Icons.arrow_back_ios,size: 20,color: Colors.white,),
+                      InkWell(
+                          onTap:(){
+                            Get.back();
+                        },
+                      child: Icon(Icons.arrow_back_ios,size: 20,color: Colors.white,)),
                       Expanded(child: Container(),),
                       Icon(Icons.info_outline,size: 20,color: Colors.white,),
 

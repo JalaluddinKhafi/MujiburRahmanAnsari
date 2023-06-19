@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     List<dynamic> responseList = achievement;
     List<Widget> listItems = [];
     responseList.forEach(
-      (post) {
+      (ListItems) {
         listItems.add(
           Container(
             height: 150,
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return onTapFile(post["newScreen"]);
+                        return onTapFile(ListItems["newScreen"]);
                       },
                     ),
                   );
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Image.asset(
-                        "assets/images/${post["image"]}",
+                        "assets/images/${ListItems["image"]}",
                         fit: BoxFit.cover,
                         height: 100,
                       ),
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            post["name"],
+                            ListItems["name"],
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
