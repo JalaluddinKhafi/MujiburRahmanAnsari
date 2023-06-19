@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profile/Screens/HomePage.dart';
+import 'package:video_player/video_player.dart';
 class spScreen extends StatefulWidget {
   const spScreen({Key? key}) : super(key: key);
 
@@ -13,6 +14,7 @@ class spScreen extends StatefulWidget {
 class _spScreenState extends State<spScreen> {
   List videoInfo = [];
   bool _playArea=false;
+  late VideoPlayerController _controller;
   _initData() async {
     await DefaultAssetBundle.of(context)
         .loadString("json/videoInfo.json")
@@ -149,7 +151,6 @@ class _spScreenState extends State<spScreen> {
       },);
   }
 
-
   _buildCard(int index){
     return Container(
       height: 135,
@@ -245,6 +246,13 @@ class _spScreenState extends State<spScreen> {
 
   }
   _onTapVideo(int index){
+  final controller =VideoPlayerController.network(videoInfo[index]["videoUrl"]);
+    _controller=controller;
+    setState(() {
 
+    });
+    controller..initialize().then((_){
+      controller.play();
+    })
   }
 }
