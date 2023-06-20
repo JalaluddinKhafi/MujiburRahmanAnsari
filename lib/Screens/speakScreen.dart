@@ -143,7 +143,6 @@ class _spScreenState extends State<spScreen> {
     _controller = YoutubePlayerController(initialVideoId: videoId!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
-
       ),
     );
   }
