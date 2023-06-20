@@ -37,7 +37,6 @@ dependencies:
   get:
   video_player:
   google_fonts: ^4.0.4
-  readmore: ^2.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
