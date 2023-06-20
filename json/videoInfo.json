@@ -1,19 +1,17 @@
 [
   {
     "title": "داستان سفر رسول الله (ص) به طایف",
-
     "thumbnail":"assets/images/travilProfet.jpg",
     "videoUrl": "https://youtu.be/5odp1a6DDBc"
   },
   {
     "title": "مقام و منزلت پدر و مادر",
-
     "thumbnail":"assets/images/father.jpg",
     "videoUrl": "https://youtu.be/pL9Awhp4uJg"
   },{
-  "title": "داستان فیل",
-  "thumbnail":"assets/images/felStory.jpg",
-  "videoUrl": ""
+  "title": "اسباب ترک گناه",
+  "thumbnail":"assets/images/gonah.jpg",
+  "videoUrl": "https://youtu.be/ej7Q5NMhk0Y"
 },{
   "title": "اخلاق اسلامی",
   "thumbnail":"assets/images/islamicHonis.jpg",
@@ -23,13 +21,13 @@
   "thumbnail":"assets/images/mahrajProfet.jpg",
   "videoUrl": "https://youtu.be/bCzTtUydAnk"
 },{
-  "title": "داستان جهنم",
-  "thumbnail":"assets/images/JahnamStory.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "title": "علانت های شب قدر",
+  "thumbnail":"assets/images/ghaderSign.jpg",
+  "videoUrl": "https://youtu.be/EDc2Csmd9XE"
 },{
   "title": "داستان از عروس مسلمان",
   "thumbnail":"assets/images/StoryOfAroos.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "videoUrl": "https://youtu.be/7t1saxPPxV4"
 },{
   "title": "ازدواج",
   "thumbnail":"assets/images/Marrage.jpg",
@@ -37,21 +35,18 @@
 },{
   "title": "داستان مصعب ابن عمیر",
   "thumbnail":"assets/images/mosabStory.jpg",
-  "videoUrl": "https://youtu.be/YMmCO_Ux7qc"
+  "videoUrl": "https://youtu.be/I5oPACYDbcE"
 },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "title": "حقوق زن در اسلام",
+  "thumbnail":"assets/images/womenRight.jpg",
+  "videoUrl": "https://youtu.be/hQvjZ_bl0TM"
 },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "title": "ظلم و اقسام آن",
+  "thumbnail":"assets/images/cruelty.jpg",
+  "videoUrl": "https://youtu.be/oD3YmLG9cEY"
 },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "title": "بخل چیست و بخیل کیست",
+  "thumbnail":"assets/images/stinginess.jpg",
+  "videoUrl": "https://youtu.be/FMXsMNiOEj0"
 }
 ]
