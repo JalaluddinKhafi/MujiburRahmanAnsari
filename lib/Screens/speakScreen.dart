@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profile/Screens/HomePage.dart';
 import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class spScreen extends StatefulWidget {
   const spScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class spScreen extends StatefulWidget {
 class _spScreenState extends State<spScreen> {
   List videoInfo = [];
   bool _playArea = false;
-  late VideoPlayerController _controller;
+  late YoutubePlayerController _controller;
   _initData() async {
     await DefaultAssetBundle.of(context)
         .loadString("json/videoInfo.json")
@@ -121,9 +122,6 @@ class _spScreenState extends State<spScreen> {
                 padding: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(70),
-                  ),
                 ),
                 child: Column(
                   children: [
@@ -141,14 +139,13 @@ class _spScreenState extends State<spScreen> {
   }
 
   _onTapVideo(int index) {
-    final controller = VideoPlayerController.network(videoInfo[index]["videoUrl"]);
-    _controller = controller;
-    setState(() {});
-    _controller
-      ..initialize().then((_) {
-        _controller.play();
-        setState(() {});
-      });
+    final videoId=YoutubePlayer.convertUrlToId(videoInfo[index]["videoUrl"]);
+    _controller = YoutubePlayerController(initialVideoId: videoId!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+
+      ),
+    );
   }
 
   _listView() {
@@ -267,15 +264,20 @@ class _spScreenState extends State<spScreen> {
   }
 
   Widget _playView(BuildContext context) {
-    final controller = _controller;
-    if (controller != null && controller.value.isInitialized) {
-      return AspectRatio(
-        aspectRatio: 16 / 9,
-        child: VideoPlayer(controller),
-      );
-    } else {
-      return AspectRatio(
-          aspectRatio: 16 / 9, child: Text("Being initialized pls wait! "));
-    }
+    return YoutubePlayer(controller: _controller,
+      showVideoProgressIndicator: true,
+      onReady: () => debugPrint('ready'),
+      bottomActions: [
+        CurrentPosition(),
+        ProgressBar(
+          isExpanded: true,
+          colors: const ProgressBarColors(
+              playedColor: Colors.amber,
+              handleColor: Colors.amberAccent
+          ),
+        ),
+        const PlaybackSpeedButton(),
+      ],
+    );
   }
 }
