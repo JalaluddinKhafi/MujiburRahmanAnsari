@@ -1,50 +1,43 @@
 [
   {
     "title": "داستان سفر رسول الله (ص) به طایف",
-    "time": "8:34 minutes",
-    "thumbnail":"assets/images/travilProfet.jpg",
-    "videoUrl": "https://www.fluttercampus.com/video.mp4"
-  },
-  {
-    "title": "داستان سفر رسول الله (ص) به طایف",
-    "time": "8:34 minutes",
+
     "thumbnail":"assets/images/travilProfet.jpg",
     "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  },
+  {
+    "title": "مقام و منزلت پدر و مادر",
+
+    "thumbnail":"assets/images/father.jpg",
+    "videoUrl": "https://youtu.be/pL9Awhp4uJg"
   },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
+  "title": "داستان فیل",
+  "thumbnail":"assets/images/felStory.jpg",
+  "videoUrl": ""
+},{
+  "title": "اخلاق اسلامی",
+  "thumbnail":"assets/images/islamicHonis.jpg",
+  "videoUrl": "https://youtu.be/b_2n6K9UXfk"
+},{
+  "title": "سفر معراج حضرت نبی کریم (ص)",
+  "thumbnail":"assets/images/mahrajProfet.jpg",
+  "videoUrl": "https://youtu.be/bCzTtUydAnk"
+},{
+  "title": "داستان جهنم",
+  "thumbnail":"assets/images/JahnamStory.jpg",
   "videoUrl": "https://youtu.be/5odp1a6DDBc"
 },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
+  "title": "داستان از عروس مسلمان",
+  "thumbnail":"assets/images/StoryOfAroos.jpg",
   "videoUrl": "https://youtu.be/5odp1a6DDBc"
 },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "title": "ازدواج",
+  "thumbnail":"assets/images/Marrage.jpg",
+  "videoUrl": "https://youtu.be/pL9Awhp4uJg"
 },{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
-},{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
-},{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
-},{
-  "title": "داستان سفر رسول الله (ص) به طایف",
-  "time": "8:34 minutes",
-  "thumbnail":"assets/images/travilProfet.jpg",
-  "videoUrl": "https://youtu.be/5odp1a6DDBc"
+  "title": "داستان مصعب ابن عمیر",
+  "thumbnail":"assets/images/mosabStory.jpg",
+  "videoUrl": "https://youtu.be/YMmCO_Ux7qc"
 },{
   "title": "داستان سفر رسول الله (ص) به طایف",
   "time": "8:34 minutes",

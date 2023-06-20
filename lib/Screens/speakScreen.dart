@@ -203,13 +203,6 @@ class _spScreenState extends State<spScreen> {
                   SizedBox(
                     height: 5,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 3),
-                    child: Text(
-                      videoInfo[index]["time"],
-                      style: TextStyle(color: Colors.grey[500]),
-                    ),
-                  )
                 ],
               )
             ],
