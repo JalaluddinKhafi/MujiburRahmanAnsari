@@ -16,6 +16,9 @@ class spScreen extends StatefulWidget {
 class _spScreenState extends State<spScreen> {
   List videoInfo = [];
   bool _playArea = false;
+  late PlayerState _playerState;
+  late YoutubeMetaData _videoMetaData;
+  bool _isPlayerReady = false;
   late YoutubePlayerController _controller;
   _initData() async {
     await DefaultAssetBundle.of(context)
@@ -35,104 +38,106 @@ class _spScreenState extends State<spScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(color: Colors.teal),
-        child: Column(
-          children: [
-            _playArea == false
-                ? Container(
-                    padding:
-                        const EdgeInsets.only(top: 70, left: 30, right: 30),
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    child: Column(
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            InkWell(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: Icon(
-                                  Icons.arrow_back_ios,
-                                  size: 20,
-                                  color: Colors.white,
-                                )),
-                            Expanded(
-                              child: Container(),
-                            ),
-                            Icon(
-                              Icons.info_outline,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "سخنرانی های شهید مولانا انصاری (رح)",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "تعداد سخنرانی های شهید مولانا انصاری (رح)در هر بخشی موجود است, ولی درین برنامه تعداد کمی از آنهارا ما آوردیم",
-                          textAlign: TextAlign.right,
-                        )
-                      ],
-                    ),
-                  )
-                : Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 100,
-                          padding: const EdgeInsets.only(
-                              top: 50, left: 30, right: 30),
-                          child: Row(
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(color: Colors.teal),
+          child: Column(
+            children: [
+              _playArea == false
+                  ? Container(
+                      padding:
+                          const EdgeInsets.only(top: 70, left: 30, right: 30),
+                      width: MediaQuery.of(context).size.width,
+                      height: 300,
+                      child: Column(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               InkWell(
-                                onTap: () {},
-                                child: Icon(
-                                  Icons.arrow_back_ios,
-                                  size: 20,
-                                  color: Colors.white,
-                                ),
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    size: 20,
+                                    color: Colors.white,
+                                  )),
+                              Expanded(
+                                child: Container(),
                               ),
-                              Expanded(child: Container()),
-                              Icon(Icons.info_outline,
-                                  size: 20, color: Colors.white)
+                              Icon(
+                                Icons.info_outline,
+                                size: 20,
+                                color: Colors.white,
+                              ),
                             ],
                           ),
-                        ),
-                        _playView(context),
-                      ],
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "سخنرانی های شهید مولانا انصاری (رح)",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "تعداد سخنرانی های شهید مولانا انصاری (رح)در هر بخشی موجود است, ولی درین برنامه تعداد کمی از آنهارا ما آوردیم",
+                            textAlign: TextAlign.right,
+                          )
+                        ],
+                      ),
+                    )
+                  : Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            padding: const EdgeInsets.only(
+                                top: 50, left: 30, right: 30),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Expanded(child: Container()),
+                                Icon(Icons.info_outline,
+                                    size: 20, color: Colors.white)
+                              ],
+                            ),
+                          ),
+                          _playView(context),
+                        ],
+                      ),
                     ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
                   ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: _listView(),
-                    ),
-                  ],
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: _listView(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -143,6 +148,7 @@ class _spScreenState extends State<spScreen> {
     _controller = YoutubePlayerController(initialVideoId: videoId!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
+        showLiveFullscreenButton: true,
       ),
     );
   }
@@ -256,20 +262,46 @@ class _spScreenState extends State<spScreen> {
   }
 
   Widget _playView(BuildContext context) {
-    return YoutubePlayer(controller: _controller,
-      showVideoProgressIndicator: true,
-      onReady: () => debugPrint('ready'),
-      bottomActions: [
-        CurrentPosition(),
-        ProgressBar(
-          isExpanded: true,
-          colors: const ProgressBarColors(
-              playedColor: Colors.amber,
-              handleColor: Colors.amberAccent
+    final controller=_controller;
+    if(controller!=true&&controller.value.isPlaying){
+      return YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+        onReady: () {
+          _isPlayerReady = true;
+        },
+        bottomActions: [
+          CurrentPosition(),
+          ProgressBar(
+            isExpanded: true,
+            colors: const ProgressBarColors(
+                playedColor: Colors.amber,
+                handleColor: Colors.amberAccent
+            ),
           ),
-        ),
-        const PlaybackSpeedButton(),
-      ],
-    );
+          const PlaybackSpeedButton(),
+        ],
+      );
+    }else{
+      return YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+        onReady: () {
+          _isPlayerReady = true;
+        },
+        bottomActions: [
+          CurrentPosition(),
+          ProgressBar(
+            isExpanded: true,
+            colors: const ProgressBarColors(
+                playedColor: Colors.amber,
+                handleColor: Colors.amberAccent
+            ),
+          ),
+          const PlaybackSpeedButton(),
+        ],
+      );
+    }
+
   }
 }

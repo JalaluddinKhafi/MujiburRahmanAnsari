@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:profile/Screens/speakScreen.dart';
 import 'Screens/HomePage.dart';
 import 'package:get/get.dart';
-
-import 'Screens/SpeackScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         //visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: spScreen(),
+      home: MyHomePage(),
     );
   }
 }
