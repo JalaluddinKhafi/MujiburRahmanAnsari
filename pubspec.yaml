@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   youtube_player_flutter: ^8.1.2
-  pdf_viewer_plugin: ^2.0.1
+  syncfusion_flutter_pdfviewer:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/images/
     - json/
+    - assets/pdfFiles/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

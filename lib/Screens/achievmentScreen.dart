@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 class achievScreen extends StatefulWidget {
 
   @override
@@ -8,6 +7,7 @@ class achievScreen extends StatefulWidget {
 }
 
 class _achievScreenState extends State<achievScreen> {
+  bool _isLoading=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _achievScreenState extends State<achievScreen> {
       ),
       body: Column(
         children: [
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
@@ -35,19 +35,17 @@ class _achievScreenState extends State<achievScreen> {
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
                     'assets/images/picture_1.jpg',
-                    width: 100,
-                    height: 100,
+                    width: 200,
+                    height: 150,
                   ),
                 ),
               ),
-              Row(
-                children: [
+
                   Text(
                     'سه آثار از شهید مولانا انصاری (رح)',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )
-                ],
-              ),
+
             ],
           ),
           Text(".............................................",),
@@ -58,18 +56,79 @@ class _achievScreenState extends State<achievScreen> {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/images/quran.jpg',
-                      height: 100,
-                      width: 100,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        'assets/images/hapyHome.jpg',
+                        height: 100,
+                        width: 100,
+                      ),
                     ),
                     Expanded(
                       child: Container(
-                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      'تفسیر قرآنکریم',
+                      'خـانـــــواده خــوشبخــت',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(width: 5,),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        'assets/images/sinKnow.jpg',
+                        height: 100,
+                        width: 100,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                      ),
+                    ),
+                    Text(
+                      'گـنـاه شنـــــاســـی',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(width: 5,),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        'assets/images/mayNotTomarro.jpg',
+                        height: 100,
+                        width: 100,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                      ),
+                    ),
+                    Text(
+                      'خـانـــــواده خــوشبخــت',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
