@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screens/HomePage.dart';
 import 'package:get/get.dart';
-
-import 'Screens/tafserScreen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         //visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: tafserScreen(),
+      home: MyHomePage(),
     );
   }
 }
