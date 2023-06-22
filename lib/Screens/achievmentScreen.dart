@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:profile/Screens/pdfView.dart';
 class achievScreen extends StatefulWidget {
 
   @override
@@ -7,12 +10,26 @@ class achievScreen extends StatefulWidget {
 }
 
 class _achievScreenState extends State<achievScreen> {
-  bool _isLoading=true;
+  List pdfInfo = [];
+  _initData() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("json/pdfInfo.json")
+        .then((value) {
+      setState(() {
+        pdfInfo = json.decode(value);
+      });
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    _initData();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jalaluddin khafi'),
+        title: Text('آثار شهید مولانا انصاری (رح)'),
         actions: [
           Icon(CupertinoIcons.chat_bubble_text),
           SizedBox(
@@ -50,96 +67,69 @@ class _achievScreenState extends State<achievScreen> {
           ),
           Text(".............................................",),
           SizedBox(height: 50,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/images/hapyHome.jpg',
-                        height: 100,
-                        width: 100,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                      ),
-                    ),
-                    Text(
-                      'خـانـــــواده خــوشبخــت',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(width: 5,),
-                  ],
-                ),
-              ],
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: _listview(),
+                  ),
+                ],
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
 
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/images/sinKnow.jpg',
-                        height: 100,
-                        width: 100,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                      ),
-                    ),
-                    Text(
-                      'گـنـاه شنـــــاســـی',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(width: 5,),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        'assets/images/mayNotTomarro.jpg',
-                        height: 100,
-                        width: 100,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                      ),
-                    ),
-                    Text(
-                      'خـانـــــواده خــوشبخــت',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(width: 5,),
-                  ],
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
   }
+
+
+
+  _listview (){
+    return ListView.builder(
+      itemCount: pdfInfo.length,
+      itemBuilder: (_, int index) {
+        return GestureDetector(
+          onTap: () {
+            Get.to(()=> pdfView(index:index));
+            debugPrint(index.toString());
+            },
+          child:Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        pdfInfo[index]["image"],
+                        height: 100,
+                        width: 100,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                      ),
+                    ),
+                    Text(
+                      pdfInfo[index]["title"],
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(width: 5,),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+}
 }
